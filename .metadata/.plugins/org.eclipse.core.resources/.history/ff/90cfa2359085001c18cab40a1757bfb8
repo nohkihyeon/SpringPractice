@@ -1,0 +1,25 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.dto.MemberRequest;
+
+@Controller
+@RequestMapping("/member")
+public class MemberController {
+
+	@RequestMapping
+	public String showMemberForm() {
+		return "member/member";
+	}
+
+	@RequestMapping(path = "/signUp")
+	public String signUpMember(@ModelAttribute MemberRequest req) {
+		
+		
+		return null;
+
+	}
+}

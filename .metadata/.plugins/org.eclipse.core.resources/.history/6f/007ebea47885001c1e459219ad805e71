@@ -1,0 +1,22 @@
+package com.example.demo.dto;
+
+public class MemberRequest {
+	private String id;
+	private String password;
+	private String name;
+	private String gender;
+	private String year;
+	private String month;
+	private String day;
+	private String mail;
+	private String emailId;
+	private String emailAddress;
+	private String phone;
+	private String address;
+	
+	public MemberRequest() {
+		
+	}
+	
+	
+}

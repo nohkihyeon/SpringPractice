@@ -1,0 +1,40 @@
+package com.example.demo.dto;
+
+public class MemberRequest {
+	private String id;
+	private String password;
+	private String name;
+	private String gender;
+	private String year;
+	private String month;
+	private String day;
+	private String mail;
+	private String emailId;
+	private String emailAddress;
+	private String phone;
+	private String address;
+	
+	public MemberRequest() {
+		
+	}
+
+	public MemberRequest(String id, String password, String name, String gender, String year, String month, String day,
+			String mail, String emailId, String emailAddress, String phone, String address) {
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.gender = gender;
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.mail = mail;
+		this.emailId = emailId;
+		this.emailAddress = emailAddress;
+		this.phone = phone;
+		this.address = address;
+	}
+
+	
+	
+	
+}

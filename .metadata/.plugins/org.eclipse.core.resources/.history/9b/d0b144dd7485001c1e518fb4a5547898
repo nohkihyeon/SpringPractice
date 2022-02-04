@@ -1,0 +1,19 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/member")
+public class MemberController {
+	
+	@RequestMapping
+	public String showMemberForm() {
+		return "member/member";
+	}
+	
+	@RequestMapping(path = "/member/signUp")
+	public String signUpMember() {
+		return "";
+	}
+}
