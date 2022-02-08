@@ -1,7 +1,0 @@
-package com.example.demo.domain.base;
-
-public class Member extends BaseMember {
-	private String year;
-	private String month;
-	private String day;
-}
