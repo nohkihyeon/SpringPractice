@@ -131,6 +131,16 @@
 				</div>
 				<div class="inputDiv">
 					<div class="inputDiv_header">
+						<p>회원 등급
+					</div>
+					<select
+						id="grade" name="grade">
+						<option value="일반">일반</option>
+						<option value="관리자">관리자</option>
+					</select>
+				</div>
+				<div class="inputDiv">
+					<div class="inputDiv_header">
 						<p>이미지
 					</div>
 					<input type="file" id="files" name="files" multiple>
@@ -144,14 +154,8 @@
 			</div>
 		</form>
 	</div>
-	
-	<button onclick="testJson()">Json Test</button>
 
 	<script>
-		const testJson = function() {
-			console.log("!!!!");
-		}
-	
 		window.onload = function() {
 			document
 					.getElementById('checkPwd')

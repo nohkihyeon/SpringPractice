@@ -75,6 +75,12 @@
                     <%= mb.getAddress()  %>
                 </td>
             </tr>
+            <tr>
+                <td >회원등급</td>
+                <td>
+                    <%= mb.getGrade()  %>
+                </td>
+            </tr>
         </table>
         <br>
         <input type="button" onclick="access()" value="확인"/>

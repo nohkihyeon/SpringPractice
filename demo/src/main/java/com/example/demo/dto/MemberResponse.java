@@ -13,9 +13,10 @@ public class MemberResponse {
 	private String email;
 	private String phone;
 	private String address;
+	private String grade;
 	
 	public MemberResponse(String id, String password, String name, String gender, String birth, String email,
-			String phone, String address) {
+			String phone, String address, String grade) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -23,7 +24,8 @@ public class MemberResponse {
 		this.birth = birth; 
 		this.email = email;
 		this.phone = phone;
-		this.address = address; 
+		this.address = address;
+		this.grade = grade;
 	}
 	
 	public static MemberResponse of(Member member) {
@@ -35,7 +37,8 @@ public class MemberResponse {
 				, member.getBirth().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 				, member.getMail()
 				, member.getPhone()
-				, member.getAddress());
+				, member.getAddress()
+				, member.getGrade());
 	}
 
 	public String getId() {
@@ -68,5 +71,8 @@ public class MemberResponse {
 
 	public String getAddress() {
 		return address;
+	}
+	public String getGrade() {
+		return grade;
 	}
 }

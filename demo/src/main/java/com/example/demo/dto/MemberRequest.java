@@ -16,10 +16,11 @@ public class MemberRequest {
 	private String emailAddress;
 	private String phone;
 	private String address;
+	private String grade;
 	private List<MultipartFile> files;
 	
 	public MemberRequest(String id, String password, String name, String gender, int year, int month, int day,
-			String emailId, String emailAddress, String phone, String address, List<MultipartFile> files) {
+			String emailId, String emailAddress, String phone, String address, String grade, List<MultipartFile> files) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -32,6 +33,7 @@ public class MemberRequest {
 		this.emailAddress = emailAddress;
 		this.phone = phone;
 		this.address = address;
+		this.grade = grade;
 		this.files = files;
 	}
 	
@@ -67,6 +69,9 @@ public class MemberRequest {
 	}
 	public String getAddress() {
 		return address;
+	}
+	public String getGrade() {
+		return grade;
 	}
 	public List<MultipartFile> getFiles() {
 		return files;

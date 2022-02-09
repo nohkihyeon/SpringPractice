@@ -25,7 +25,7 @@
 jQuery("#list").jqGrid({
    	url:'/member/list',
 	datatype: "json",
-   	colNames:['아이디','이름', '성별', '생년월일', '이메일', '전화번호','주소'],
+   	colNames:['아이디','이름', '성별', '생년월일', '이메일', '전화번호','주소', '회원등급'],
    	colModel:[
    		{name:'id',index:'id', width:55},
    		{name:'name',index:'name', width:90},
@@ -33,7 +33,8 @@ jQuery("#list").jqGrid({
    		{name:'birth',index:'birth', width:80, align:"center"},
    		{name:'email',index:'email', width:80, align:"center"},
    		{name:'phone',index:'phone', width:80, align:"center"},
-   		{name:'address',index:'address', width:80, align:"center"}
+   		{name:'address',index:'address', width:80, align:"center"},
+   		{name:'grade',index:'grade', width:80, align:"center"}
    	],
    	rowNum:10,
    	rowList:[10,20,30],

@@ -11,10 +11,11 @@ public class Member {
 	private String mail;
 	private String phone;
 	private String address;
+	private String grade;
 	private LocalDate reg;
 
 	public Member(String id, String password, String name, String gender, LocalDate birth, String mail,
-			String phone, String address) {
+			String phone, String address, String grade) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -23,6 +24,7 @@ public class Member {
 		this.mail = mail;
 		this.phone = phone;
 		this.address = address;
+		this.grade = grade;
 	}
 
 	public String getId() {
@@ -55,6 +57,10 @@ public class Member {
 
 	public String getAddress() {
 		return address;
+	}
+	
+	public String getGrade() {
+		return grade;
 	}
 
 	public LocalDate getReg() {

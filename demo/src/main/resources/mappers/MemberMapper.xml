@@ -12,6 +12,7 @@
 			mail,
 			phone,
 			address,
+			grade,
 			reg
 		)
 		VALUES(
@@ -23,11 +24,16 @@
 			#{mail},
 			#{phone},
 			#{address},
+			#{grade},
 			sysdate
 		)
 	</insert>
 	
 	<select id="getMemberList" resultType="Member">
-		select * from Member
+		select id, password, name, gender,birth, mail, phone, address, grade from Member
+		<where>
+		<if test="grade != null">AND grade = #{일반}</if>
+		</where>
+
 	</select>
 </mapper>

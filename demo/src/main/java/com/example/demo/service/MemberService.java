@@ -37,12 +37,13 @@ public class MemberService {
 				LocalDate.of(req.getYear(), req.getMonth(), req.getDay()),
 				req.getEmailId() + "@" + req.getEmailAddress(),
 				req.getPhone(),
-				req.getAddress()
+				req.getAddress(),
+				req.getGrade()
 				);
 
 		for(MultipartFile image : req.getFiles()) {
 			try {
-				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYMMDDHHmmSS");
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
 				String currentDateTime = simpleDateFormat.format(new Date());
 				String originalName = image.getOriginalFilename();
 				File dest = new File(currentDateTime + "_" + originalName);

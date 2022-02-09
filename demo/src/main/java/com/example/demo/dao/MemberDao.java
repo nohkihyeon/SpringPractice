@@ -21,12 +21,6 @@ import com.example.demo.domain.Member;
 
 @Mapper
 public interface MemberDao {
-//	@Autowired
-//	public SqlSession sqlSession;
-//	
-//	public void saveMember(Member member) {
-//		sqlSession.insert("saveMember", member);
-//	}
 	public void saveMember(Member member);
 
 	public List<Member> getMemberList();
