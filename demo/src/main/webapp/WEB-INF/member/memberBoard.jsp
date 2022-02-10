@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="com.example.demo.controller.MemberController" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +18,22 @@
 <script src="/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <body>
+	<div> <!-- 조회 옵션 부분 -->
+		<form id="searchForm">
+			<select name="search" id="search" onchange='getMemberList(this.value)'>
+				<option value='general'>일반</option>
+				<option value='admin'>관리자</option>
+				<option value='all'>전체</option>
+			</select>		
+		</form>
+	</div>
 	<table id="list"></table>
 	<div id="pager"></div>
 </body>
 
 <script type="text/javascript">
+
+
 jQuery("#list").jqGrid({
    	url:'/member/list',
 	datatype: "json",

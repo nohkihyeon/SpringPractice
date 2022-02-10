@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.MemberRequest;
@@ -43,7 +44,9 @@ public final class MemberController {
 	}
 	
 	@RequestMapping("/list")
-	public @ResponseBody List<MemberResponse> getMemberList() {
-		return memberService.getMemberList();
+	public @ResponseBody List<MemberResponse> getMemberList(@RequestParam(value="search", required = false, defaultValue ="general")String grade) {
+		System.out.println("grade : " + grade);
+		return memberService.getMemberList("general");
 	}
+	
 }
