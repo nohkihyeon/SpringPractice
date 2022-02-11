@@ -36,7 +36,7 @@
 	
 	<select id="getAdminMemberList" resultType="Member">
 		select id, password, name, gender,birth, mail, phone, address, grade from Member
-		where grade = '일반'
+		where grade = '관리자'
 
 	</select>
 	

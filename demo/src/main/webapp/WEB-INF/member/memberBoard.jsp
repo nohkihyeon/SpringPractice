@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ page import="com.example.demo.controller.MemberController" %>
+<%
+	String select = request.getParameter("search");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +23,7 @@
 <body>
 	<div> <!-- 조회 옵션 부분 -->
 		<form id="searchForm">
-			<select name="search" id="search" onchange='getMemberList(this.value)'>
+			<select name="search" id="search" onchange="reLoad(this.value)">
 				<option value='general'>일반</option>
 				<option value='admin'>관리자</option>
 				<option value='all'>전체</option>
@@ -32,8 +35,6 @@
 </body>
 
 <script type="text/javascript">
-
-
 jQuery("#list").jqGrid({
    	url:'/member/list',
 	datatype: "json",
@@ -57,6 +58,13 @@ jQuery("#list").jqGrid({
     caption:"회원 리스트"
 });
 jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false});
+
+function reLoad(selectWord) {
+	jQuery("#list").trigger("reloadGrid");
+}
+
+
+
 </script>
 
 </html>

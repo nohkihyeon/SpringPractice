@@ -2,12 +2,12 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.MemberRequest;
@@ -18,6 +18,7 @@ import com.example.demo.service.MemberService;
 @RequestMapping("/member")
 public final class MemberController {
 	MemberService memberService;
+	String grade = "admin";
 	
 	@Autowired
 	public MemberController(MemberService memberService) {
@@ -44,9 +45,15 @@ public final class MemberController {
 	}
 	
 	@RequestMapping("/list")
-	public @ResponseBody List<MemberResponse> getMemberList(@RequestParam(value="search", required = false, defaultValue ="general")String grade) {
+	public @ResponseBody List<MemberResponse> getMemberList() {
 		System.out.println("grade : " + grade);
-		return memberService.getMemberList("general");
+		return memberService.getMemberList(grade);
 	}
 	
+//	@GetMapping("/list")
+//	public String paramGrade(HttpServletRequest request) {
+//		grade = request.getParameter("search");
+//		System.out.println("grade : " + grade);
+//		return grade;
+//	}
 }

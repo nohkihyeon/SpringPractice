@@ -59,13 +59,7 @@ public class MemberService {
 	}
 
 	public List<MemberResponse> getMemberList(String grade) {
-		if(grade.equals("general")){
-			return memberDao.getGeneralMemberList()
-					.stream()
-					.map(MemberResponse::of)
-					.collect(Collectors.toList());
-		}
-		else if(grade.equals("admin")) {
+		if(grade.equals("admin")) {
 			return memberDao.getAdminMemberList()
 					.stream()
 					.map(MemberResponse::of)
@@ -77,6 +71,9 @@ public class MemberService {
 					.map(MemberResponse::of)
 					.collect(Collectors.toList());
 		}
-		return null;
+		return memberDao.getGeneralMemberList()
+				.stream()
+				.map(MemberResponse::of)
+				.collect(Collectors.toList());
 	}
 }
