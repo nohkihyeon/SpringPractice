@@ -58,20 +58,8 @@ public class MemberService {
 		return MemberResponse.of(member);
 	}
 
-	public List<MemberResponse> getMemberList(String grade) {
-		if(grade.equals("admin")) {
-			return memberDao.getAdminMemberList()
-					.stream()
-					.map(MemberResponse::of)
-					.collect(Collectors.toList());
-		}
-		else if(grade.equals("all")) {
-			return memberDao.getAllMemberList()
-					.stream()
-					.map(MemberResponse::of)
-					.collect(Collectors.toList());
-		}
-		return memberDao.getGeneralMemberList()
+	public List<MemberResponse> getMemberList() {
+		return memberDao.getMemberList()
 				.stream()
 				.map(MemberResponse::of)
 				.collect(Collectors.toList());

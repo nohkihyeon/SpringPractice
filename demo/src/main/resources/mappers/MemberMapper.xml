@@ -28,20 +28,9 @@
 			sysdate
 		)
 	</insert>
-	<select id="getGeneralMemberList" resultType="Member">
-		select id, password, name, gender,birth, mail, phone, address, grade from Member
-		where grade = '일반'
-
-	</select>
-	
-	<select id="getAdminMemberList" resultType="Member">
-		select id, password, name, gender,birth, mail, phone, address, grade from Member
-		where grade = '관리자'
-
-	</select>
-	
-	<select id="getAllMemberList" resultType="Member">
-		select id, password, name, gender,birth, mail, phone, address, grade from Member
-
+	<select id="getMemberList" resultType="Member">
+		select id, password, name, gender,birth, mail, phone, address, grade
+		from Member
+ 		where grade = #{search, jdbcType=VARCHAR}
 	</select>
 </mapper>

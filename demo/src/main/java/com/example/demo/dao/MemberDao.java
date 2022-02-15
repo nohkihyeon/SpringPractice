@@ -23,7 +23,5 @@ import com.example.demo.domain.Member;
 public interface MemberDao {
 	public void saveMember(Member member);
 
-	public List<Member> getGeneralMemberList();
-	public List<Member> getAdminMemberList();
-	public List<Member> getAllMemberList();
+	public List<Member> getMemberList();
 }

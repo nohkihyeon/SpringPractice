@@ -21,19 +21,27 @@
 <script src="/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <body>
-	<div> <!-- 조회 옵션 부분 -->
-		<form id="searchForm">
-			<select name="search" id="search" onchange="reLoad(this.value)">
+	<div>  <!-- 조회 옵션 부분 -->
+		<form action = "memberBoard.do" method="get" id="formId" >
+			<select name="search" id="search" class = "search" onchange="reLoad()">
+				<option value='all'>전체</option>
 				<option value='general'>일반</option>
 				<option value='admin'>관리자</option>
-				<option value='all'>전체</option>
+				
 			</select>		
 		</form>
+
+
+		<!-- <form action="memberBoard.do">
+			<input type="text" name="id" placeholder="아이디" /><br />
+			<button>Sign Up</button>
+		</form> -->
 	</div>
 	<table id="list"></table>
 	<div id="pager"></div>
 </body>
 
+<!-- onchange="reLoad(this.value)" -->
 <script type="text/javascript">
 jQuery("#list").jqGrid({
    	url:'/member/list',
@@ -59,10 +67,11 @@ jQuery("#list").jqGrid({
 });
 jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false});
 
-function reLoad(selectWord) {
-	jQuery("#list").trigger("reloadGrid");
+function reLoad() {
+	console.log($(".search").val());
+	$("#formId").submit();
+	 jQuery("#list").trigger("reloadGrid");  
 }
-
 
 
 </script>
