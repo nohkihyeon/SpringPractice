@@ -58,8 +58,8 @@ public class MemberService {
 		return MemberResponse.of(member);
 	}
 
-	public List<MemberResponse> getMemberList() {
-		return memberDao.getMemberList()
+	public List<MemberResponse> getMemberList(String gradeString) {
+		return memberDao.getMemberList(gradeString)
 				.stream()
 				.map(MemberResponse::of)
 				.collect(Collectors.toList());

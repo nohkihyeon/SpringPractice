@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="com.example.demo.controller.MemberController" %>
-<%
-	String select = request.getParameter("search");
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,20 +19,14 @@
 
 <body>
 	<div>  <!-- 조회 옵션 부분 -->
-		<form action = "memberBoard.do" method="get" id="formId" >
+		<form action = "member/list">
 			<select name="search" id="search" class = "search" onchange="reLoad()">
-				<option value='all'>전체</option>
 				<option value='general'>일반</option>
+				<option value='all'>전체</option>
 				<option value='admin'>관리자</option>
 				
 			</select>		
 		</form>
-
-
-		<!-- <form action="memberBoard.do">
-			<input type="text" name="id" placeholder="아이디" /><br />
-			<button>Sign Up</button>
-		</form> -->
 	</div>
 	<table id="list"></table>
 	<div id="pager"></div>
@@ -43,10 +34,11 @@
 
 <!-- onchange="reLoad(this.value)" -->
 <script type="text/javascript">
+$(document).ready(function () {
 jQuery("#list").jqGrid({
    	url:'/member/list',
 	datatype: "json",
-   	colNames:['아이디','이름', '성별', '생년월일', '이메일', '전화번호','주소', '회원등급'],
+   	colNames:['아이디','이름', '성별', '생년월일', '이메일', '전화번호','주소','등급'],
    	colModel:[
    		{name:'id',index:'id', width:55},
    		{name:'name',index:'name', width:90},
@@ -55,7 +47,11 @@ jQuery("#list").jqGrid({
    		{name:'email',index:'email', width:80, align:"center"},
    		{name:'phone',index:'phone', width:80, align:"center"},
    		{name:'address',index:'address', width:80, align:"center"},
-   		{name:'grade',index:'grade', width:80, align:"center"}
+   		{name:'grade',index:'grade', width:80, align:"center",     
+   		    stype: "select",
+            searchoptions: { value: "general:general;admin:admin;all:all" }
+        }
+ 
    	],
    	rowNum:10,
    	rowList:[10,20,30],
@@ -63,10 +59,23 @@ jQuery("#list").jqGrid({
    	sortname: 'id',
     viewrecords: true,
     sortorder: "desc",
-    caption:"회원 리스트"
+    caption:"회원 리스트",
+	
 });
-jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false});
 
+
+jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false},{},{},{},{
+	multipleSearch:false,
+	multipleGroup:false,
+	showQuery:false,
+	top: 190,
+	left: 200,
+	caption: "Searching standard, admin Member",
+	closeAfterSearch:false,
+	sopt:['eq'],
+},);
+
+});
 function reLoad() {
 	console.log($(".search").val());
 	$("#formId").submit();

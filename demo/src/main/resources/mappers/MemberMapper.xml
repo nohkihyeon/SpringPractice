@@ -28,9 +28,18 @@
 			sysdate
 		)
 	</insert>
-	<select id="getMemberList" resultType="Member">
+	<select id="getMemberList" resultType="Member"  parameterType = "String">
 		select id, password, name, gender,birth, mail, phone, address, grade
-		from Member
- 		where grade = #{search, jdbcType=VARCHAR}
+		from Member WHERE 1=1
+		<choose>
+			<when test='gradeString != null and "admin".equals(gradeString)' >
+				AND grade = '관리자'
+			</when>
+			<when test='gradeString != null and "general".equals(gradeString)'>
+				AND grade = '일반'
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose> 
 	</select>
 </mapper>

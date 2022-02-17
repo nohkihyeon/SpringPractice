@@ -22,35 +22,36 @@ import com.example.demo.service.MemberService;
 @RequestMapping("/member")
 public final class MemberController {
 	MemberService memberService;
-	
+
 	@Autowired
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
-	
+
 	@RequestMapping
 	public String showMemberForm() {
 		return "member/member";
 	}
-	
+
 	@RequestMapping(path = "/signUp")
 	public String signUpMember(@ModelAttribute MemberRequest req, Model model) {
-		MemberResponse member= memberService.saveMember(req);
-		
+		MemberResponse member = memberService.saveMember(req);
+
 		model.addAttribute("member", member);
-		
+
 		return "member/memberJoinFrom";
 	}
-	
+
 	@RequestMapping("/board")
 	public String showMember() {
 		return "member/memberBoard";
 	}
-	
-	@RequestMapping("/list")
-	public @ResponseBody List<MemberResponse> getMemberList(@RequestParam(value = "search", required =false) String search) {
-		System.out.println(search);
-		return memberService.getMemberList();
+
+	@RequestMapping(path = "/list")
+	@ResponseBody
+	public List<MemberResponse> findMember(
+			@RequestParam(value = "searchString", required = false, defaultValue="general") String gradeString) {
+		return memberService.getMemberList(gradeString);
 	}
-	
+
 }
