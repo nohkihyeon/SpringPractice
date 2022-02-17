@@ -21,9 +21,9 @@
 	<div>  <!-- 조회 옵션 부분 -->
 		<form action = "member/list">
 			<select name="search" id="search" class = "search" onchange="reLoad()">
-				<option value='general'>일반</option>
-				<option value='all'>전체</option>
-				<option value='admin'>관리자</option>
+				<option value='일반'>일반</option>
+				<option value='관리자'>관리자</option>
+				<option value='전체'>전체</option>
 				
 			</select>		
 		</form>
@@ -49,7 +49,7 @@ jQuery("#list").jqGrid({
    		{name:'address',index:'address', width:80, align:"center"},
    		{name:'grade',index:'grade', width:80, align:"center",     
    		    stype: "select",
-            searchoptions: { value: "general:general;admin:admin;all:all" }
+            searchoptions: { value: "일반:일반;관리자:관리자;전체:전체" }
         }
  
    	],
@@ -76,13 +76,16 @@ jQuery("#list").jqGrid('navGrid','#pager',{edit:false,add:false,del:false},{},{}
 },);
 
 });
+
 function reLoad() {
-	console.log($(".search").val());
-	$("#formId").submit();
-	 jQuery("#list").trigger("reloadGrid");  
+	let searchString = $("#search").val();
+	$("#list").setGridParam({
+		postData: {
+			"searchString":searchString
+		}
+	}).trigger("reloadGrid");
 }
 
 
 </script>
-
 </html>

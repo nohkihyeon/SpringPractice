@@ -32,14 +32,13 @@
 		select id, password, name, gender,birth, mail, phone, address, grade
 		from Member WHERE 1=1
 		<choose>
-			<when test='gradeString != null and "admin".equals(gradeString)' >
-				AND grade = '관리자'
-			</when>
-			<when test='gradeString != null and "general".equals(gradeString)'>
-				AND grade = '일반'
+			<when test='gradeString != null and "일반".equals(gradeString) or "관리자".equals(gradeString)' >
+				AND grade = #{gradeString}
 			</when>
 			<otherwise>
 			</otherwise>
 		</choose> 
 	</select>
+	
+	
 </mapper>
